@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cepa %>
+
+<div>
+  <%= link_to "Edit this cepa", edit_cepa_path(@cepa) %> |
+  <%= link_to "Back to cepas", cepas_path %>
+
+  <%= button_to "Destroy this cepa", @cepa, method: :delete %>
+</div>

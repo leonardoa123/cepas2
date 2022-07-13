@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @vino %>
+
+<div>
+  <%= link_to "Edit this vino", edit_vino_path(@vino) %> |
+  <%= link_to "Back to vinos", vinos_path %>
+
+  <%= button_to "Destroy this vino", @vino, method: :delete %>
+</div>

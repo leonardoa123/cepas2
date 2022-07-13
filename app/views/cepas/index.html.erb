@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cepas</h1>
+
+<div id="cepas">
+  <% @cepas.each do |cepa| %>
+    <%= render cepa %>
+    <p>
+      <%= link_to "Show this cepa", cepa %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New cepa", new_cepa_path %>
