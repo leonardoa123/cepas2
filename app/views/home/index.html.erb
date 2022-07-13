@@ -1,0 +1,24 @@
+<!-- app/views/home/index.html.erb -->
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="container">
+            <div class="row">
+                <% @vinos.each do |vino| %>
+                    <div class="col-md-3">
+                        <div class="card pb-3 mb-3">
+                            <img class="card-img-top" src="https://dummyimage.com/600x400/c7c7c7/737373&text=image" alt="<%= vino.nombre %>" />
+                            <div class="card-block">
+                                <h5 class="card-title">
+                                    <%= vino.nombre %>
+                                </h5>
+                                <div class="card-text">
+                                <p>Texto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
