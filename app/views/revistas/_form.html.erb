@@ -1,0 +1,22 @@
+<%= form_with(model: revista) do |form| %>
+  <% if revista.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(revista.errors.count, "error") %> prohibited this revista from being saved:</h2>
+
+      <ul>
+        <% revista.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nombre, style: "display: block" %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

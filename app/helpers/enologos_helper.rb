@@ -1,0 +1,2 @@
+module EnologosHelper
+end

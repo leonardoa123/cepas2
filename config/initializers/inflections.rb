@@ -9,6 +9,7 @@
    inflect.irregular "cepa", "cepas"
    inflect.irregular "ensamblaje", "ensamblajes"
    inflect.irregular "vino", "vinos"
+   inflect.irregular "revista", "revistas"
 #   inflect.uncountable %w( fish sheep )
  end
 

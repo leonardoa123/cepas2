@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_13_034255) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_05_013608) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,8 +23,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_034255) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cargos", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cepas", force: :cascade do |t|
     t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enologos", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "edad"
+    t.string "nacionalidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,6 +51,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_034255) do
     t.datetime "updated_at", null: false
     t.index ["cepa_id"], name: "index_ensamblajes_on_cepa_id"
     t.index ["vino_id"], name: "index_ensamblajes_on_vino_id"
+  end
+
+  create_table "revistas", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trabajos", force: :cascade do |t|
+    t.integer "enologo_id", null: false
+    t.integer "revista_id", null: false
+    t.integer "cargo_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cargo_id"], name: "index_trabajos_on_cargo_id"
+    t.index ["enologo_id"], name: "index_trabajos_on_enologo_id"
+    t.index ["revista_id"], name: "index_trabajos_on_revista_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_034255) do
 
   add_foreign_key "ensamblajes", "cepas"
   add_foreign_key "ensamblajes", "vinos"
+  add_foreign_key "trabajos", "cargos"
+  add_foreign_key "trabajos", "enologos"
+  add_foreign_key "trabajos", "revistas"
 end

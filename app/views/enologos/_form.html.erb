@@ -1,0 +1,60 @@
+<%= form_with(model: enologo) do |form| %>
+  <% if enologo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(enologo.errors.count, "error") %> prohibited this enologo from being saved:</h2>
+
+      <ul>
+        <% enologo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nombre, style: "display: block" %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div>
+    <%= form.label :edad, style: "display: block" %>
+    <%= form.number_field :edad %>
+  </div>
+
+  <div>
+    <%= form.label :nacionalidad, style: "display: block" %>
+    <%= form.text_field :nacionalidad %>
+  </div>
+
+
+  <% if enologo.trabajos.count != 0 %>
+      <div>
+        <%= form.fields_for :trabajos do |f_trabajos| %>
+          <%= f_trabajos.label enologo.trabajos[@pos].revista.nombre %>
+          <%= f_trabajos.label enologo.trabajos[@pos].cargo.nombre %>
+          <% @pos += 1 %>
+        <% end %>
+      </div>
+    <% else %>
+    <%= form.fields_for :trabajos do |f_trabajos| %>
+      <% @revistas.each do |revista| %>
+        <div>
+            <%= f_trabajos.label :revista_id, revista.nombre %>
+            <%= f_trabajos.check_box :revista_id, value: 0 %>
+        </div>
+      <% end %>
+      <br>
+      <% @cargos.each do |cargo| %>
+        <div>
+          <%= f_trabajos.label :cargo_id, cargo.nombre %>
+          <%= f_trabajos.check_box :cargo_id, value: 0 %>
+        </div>
+      <% end %>
+    <% end %>
+
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>

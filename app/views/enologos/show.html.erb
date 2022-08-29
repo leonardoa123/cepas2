@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @enologo %>
+
+<div>
+  <%= link_to "Edit this enologo", edit_enologo_path(@enologo) %> |
+  <%= link_to "Back to enologos", enologos_path %>
+
+  <%= button_to "Destroy this enologo", @enologo, method: :delete %>
+</div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid fixed-top">
   <div class="container">
     <span class="navbar-brand">Cepas</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,31 +7,38 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if admin_signed_in? %>
-            <%= link_to 'Vinos', vinos_path, class: 'text-light text-decoration-none pt-1 pe-3' %>
-            <%= link_to 'Cepas', cepas_path, class: 'text-light text-decoration-none pt-1 pe-3' %>
+            <li class="nav-item">
+              <%= link_to 'Catálogo', admin_cat_path, class: 'nav-link text-light text-decoration-none pt-1 pe-3' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Vinos', vinos_path, class: 'nav-link text-light text-decoration-none pt-1 pe-3' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Cepas', cepas_path, class: 'nav-link text-light text-decoration-none pt-1 pe-3' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Enologos', enologos_path, class: 'nav-link text-light text-decoration-none pt-1 pe-3' %>
+            </li>
           <span class="text-light pt-1 pe-3">
             <%= current_admin.email %>
           </span>
           <%= button_to 'Cerrar sesión', destroy_admin_session_path, method: :delete, form: {data: {turbo_confirm: '¿Desea cerrar sesion?'}} %>
         <% elsif user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Catálogo', user_cat_path, class: 'nav-link text-light text-decoration-none pt-1 pe-3' %>
+          </li>
           <span class="text-light pt-1 pe-3">
             <%= current_user.email %>
           </span>
           <%= button_to 'Cerrar sesión', destroy_user_session_path, method: :delete, form: {data: {turbo_confirm: '¿Desea cerrar sesion?'}} %>
         <% else %>
           <li class="nav-item">
-            <%= link_to 'Ingreso Administrador', new_admin_session_path, class: 'text-decoration-none text-light' %>
+            <%= link_to 'Iniciar Sesión', new_user_session_path, class: 'text-decoration-none text-light pe-5' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Administrador', new_admin_session_path, class: 'text-decoration-none text-light' %>
           </li>
         <% end %>
-        <%# <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li> %>
       </ul>
     </div>
   </div>

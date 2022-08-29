@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ ::-webkit-scrollbar {
+    display: none;
+ }
+
+ .main {
+   padding: 2em 0;
+ }

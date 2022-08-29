@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Revistas</h1>
+
+<div id="revistas">
+  <% @revistas.each do |revista| %>
+    <%= render revista %>
+    <p>
+      <%= link_to "Show this revista", revista %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New revista", new_revista_path %>
